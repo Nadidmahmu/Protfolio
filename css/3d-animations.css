@@ -1,0 +1,367 @@
+/* ===== 3D ANIMATIONS CSS ===== */
+
+/* 3D Variables */
+:root {
+    --perspective: 1000px;
+    --rotation-amount: 15deg;
+    --lift-amount: 10px;
+    --transition-3d: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* 3D Profile Image Animation */
+.about-image .image-placeholder {
+    perspective: var(--perspective);
+    transform-style: preserve-3d;
+}
+
+.profile-img-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: var(--transition-3d);
+}
+
+.about-image .image-placeholder:hover .profile-img-container {
+    transform: rotateY(10deg) rotateX(-10deg) translateZ(20px);
+}
+
+.profile-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* Add 3D glow effect on hover */
+.about-image .image-placeholder::after {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    border-radius: 50%;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(100, 255, 218, 0.3) 0%,
+        rgba(100, 255, 218, 0) 70%
+    );
+    opacity: 0;
+    transform: translateZ(-10px);
+    transition: var(--transition-3d);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.about-image .image-placeholder:hover::after {
+    opacity: 1;
+    transform: translateZ(0);
+}
+
+/* 3D Skill Cards */
+.skill-card {
+    perspective: var(--perspective);
+    transform-style: preserve-3d;
+}
+
+.skill-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: var(--transition-3d);
+}
+
+.skill-card:hover .skill-card-inner {
+    transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+}
+
+.skill-icon {
+    transform: translateZ(20px);
+    transition: var(--transition-3d);
+}
+
+.skill-card:hover .skill-icon {
+    transform: translateZ(40px);
+    color: var(--color-accent);
+    text-shadow: 0 0 15px rgba(100, 255, 218, 0.5);
+}
+
+.skill-title {
+    transform: translateZ(15px);
+    transition: var(--transition-3d);
+}
+
+.skill-card:hover .skill-title {
+    transform: translateZ(30px);
+}
+
+.skill-level {
+    transform: translateZ(10px);
+    transition: var(--transition-3d);
+}
+
+.skill-card:hover .skill-level {
+    transform: translateZ(20px);
+}
+
+/* 3D Project Cards */
+.project-card {
+    perspective: var(--perspective);
+    transform-style: preserve-3d;
+    transition: var(--transition-3d);
+}
+
+.project-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: var(--transition-3d);
+}
+
+.project-card:hover .project-card-inner {
+    transform: translateY(-15px) rotateX(5deg) rotateY(5deg);
+}
+
+.project-image {
+    transform: translateZ(10px);
+    transition: var(--transition-3d);
+}
+
+.project-card:hover .project-image {
+    transform: translateZ(30px);
+}
+
+.project-info {
+    transform: translateZ(5px);
+    transition: var(--transition-3d);
+}
+
+.project-card:hover .project-info {
+    transform: translateZ(20px);
+}
+
+.project-title, .project-description, .project-tech, .project-links {
+    transform: translateZ(0);
+    transition: var(--transition-3d);
+}
+
+.project-card:hover .project-title {
+    transform: translateZ(25px);
+}
+
+.project-card:hover .project-description {
+    transform: translateZ(20px);
+}
+
+.project-card:hover .project-tech {
+    transform: translateZ(15px);
+}
+
+.project-card:hover .project-links {
+    transform: translateZ(10px);
+}
+
+/* 3D Achievement Cards */
+.achievement-card {
+    perspective: var(--perspective);
+    transform-style: preserve-3d;
+}
+
+.achievement-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: var(--transition-3d);
+}
+
+.achievement-card:hover .achievement-card-inner {
+    transform: translateY(-15px) rotateX(5deg) rotateY(5deg);
+}
+
+.achievement-icon {
+    transform: translateZ(20px);
+    transition: var(--transition-3d);
+}
+
+.achievement-card:hover .achievement-icon {
+    transform: translateZ(40px);
+    text-shadow: 0 0 15px rgba(100, 255, 218, 0.5);
+}
+
+.achievement-counter {
+    transform: translateZ(15px);
+    transition: var(--transition-3d);
+}
+
+.achievement-card:hover .achievement-counter {
+    transform: translateZ(30px);
+}
+
+.achievement-title {
+    transform: translateZ(10px);
+    transition: var(--transition-3d);
+}
+
+.achievement-card:hover .achievement-title {
+    transform: translateZ(20px);
+}
+
+/* 3D Section Title Animation */
+.section-title {
+    position: relative;
+    perspective: var(--perspective);
+}
+
+.section-title::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--color-accent);
+    opacity: 0.1;
+    transform: translateZ(-15px);
+    transform-origin: center;
+    transition: var(--transition-3d);
+    pointer-events: none;
+}
+
+.section:hover .section-title::after {
+    opacity: 0.15;
+    transform: translateZ(-25px) scale(1.05);
+}
+
+/* 3D Floating Animation for Logo */
+@keyframes float {
+    0% {
+        transform: translateY(0) translateZ(0) rotateX(0) rotateY(0);
+    }
+    50% {
+        transform: translateY(-10px) translateZ(10px) rotateX(5deg) rotateY(5deg);
+    }
+    100% {
+        transform: translateY(0) translateZ(0) rotateX(0) rotateY(0);
+    }
+}
+
+.logo-placeholder {
+    perspective: var(--perspective);
+    transform-style: preserve-3d;
+    animation: float 5s ease-in-out infinite;
+}
+
+/* 3D Button Effects */
+.btn {
+    position: relative;
+    perspective: var(--perspective);
+    transform-style: preserve-3d;
+    transition: var(--transition-3d);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: inherit;
+    transform: translateZ(-5px);
+    filter: blur(5px);
+    opacity: 0;
+    transition: var(--transition-3d);
+}
+
+.btn:hover {
+    transform: translateZ(10px);
+}
+
+.btn:hover::before {
+    opacity: 0.4;
+    transform: translateZ(-10px) scale(0.95);
+}
+
+.btn.primary:hover {
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
+}
+
+/* 3D Mouse Move Effect for Hero Section */
+.hero {
+    perspective: var(--perspective);
+    transform-style: preserve-3d;
+}
+
+.hero-3d-container {
+    transform-style: preserve-3d;
+    transition: transform 0.2s ease-out;
+}
+
+.greeting, .name, .profession {
+    will-change: transform;
+    transform-style: preserve-3d;
+    transition: transform 0.2s ease-out;
+}
+
+/* 3D Contact Form Animation */
+.form-group {
+    perspective: var(--perspective);
+    transform-style: preserve-3d;
+}
+
+.form-group input, .form-group textarea {
+    transform: translateZ(0);
+    transition: var(--transition-3d);
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    transform: translateZ(10px);
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.2);
+}
+
+/* 3D Animation for Chat Icon */
+@keyframes pulse3D {
+    0% {
+        transform: scale(1) translateZ(0);
+    }
+    50% {
+        transform: scale(1.1) translateZ(15px);
+    }
+    100% {
+        transform: scale(1) translateZ(0);
+    }
+}
+
+.chat-icon {
+    perspective: var(--perspective);
+    transform-style: preserve-3d;
+    animation: pulse3D 3s ease-in-out infinite;
+}
+
+/* Apply these 3D effects only on devices that can handle them */
+@media (prefers-reduced-motion: reduce) {
+    .profile-img-container,
+    .skill-card-inner,
+    .project-card-inner,
+    .achievement-card-inner,
+    .section-title::after,
+    .logo-placeholder,
+    .btn,
+    .hero-3d-container,
+    .greeting, .name, .profession,
+    .form-group input, .form-group textarea,
+    .chat-icon {
+        transition: none;
+        animation: none;
+        transform: none;
+    }
+}
